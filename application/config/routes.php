@@ -6,7 +6,13 @@ $route['admin']  				= "access/users/login";
 $route['user']   				= "access/subscriber/login";
 $route['contact']   			= "Frontend/HomeController/contact";
 $route['category']   			= "Frontend/HomeController/category";
-$route['top_category']   		= "Frontend/HomeController/top_category";
+
+$route['marriage']   		    = "Frontend/HomeController/marriage";
+$route['car']   		      	= "Frontend/HomeController/car";
+
+$route['marriage_details/(:any)']   	= "Frontend/HomeController/marriage_details/$1";
+$route['car_details/(:any)']	      	= "Frontend/HomeController/car_details/$1";
+
 $route['checkout']   			= "Frontend/HomeController/checkout";
 $route['view_cart']   			= "Frontend/HomeController/view_cart";
 $route['about']   			    = "Frontend/HomeController/about_us";

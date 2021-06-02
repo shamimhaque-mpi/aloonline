@@ -35,17 +35,79 @@
 
         return view('frontend.pages.contact');
     }
-    
+
     /*
      * *****************************
-     *  Top Category Page Controller
+     *  marriage Page Controller
      *  @param NULL
      * *************************
     */
-    public function top_category() {
-        $this->data['title'] = "Top Category";
+    public function marriage() {
+        $this->data['title'] = "Marriage Media";
 
-        return view('frontend.pages.top_category');
+
+        $where = [];
+        if(!empty($_POST['search'])){
+            foreach ($_POST['search'] as $key => $value) {
+                if($value!=''){
+                    if($key=='age_from'){
+                        $where['age >='] = $value;
+                    }
+                    else if($key=='age_to'){
+                        $where['age <='] = $value;
+                    }
+                    else {
+                        $where[$key] = $value;
+                    }
+                }
+            }
+        }
+
+        $this->data['record_list'] = readTable('marriage', $where);
+
+        return view('frontend.pages.marriage');
+    }
+
+    /*
+     * *****************************
+     *  car Page Controller
+     *  @param NULL
+     * *************************
+    */
+    public function car() {
+        $this->data['title'] = "Car Rent";
+
+        $this->data['record_list'] = readTable('car_rent', []);
+
+        return view('frontend.pages.car');
+    }
+
+    /*
+     * *****************************
+     *  Car Details Page Controller
+     *  @param NULL
+     * *************************
+    */
+    public function car_details($id) {
+        $this->data['title'] = "Car Rent";
+
+        $this->data['record'] = readTable('car_rent', ['id'=>$id])[0];
+
+        return view('frontend.pages.car_details');
+    }
+
+    /*
+     * *****************************
+     *  Marriage Details Page Controller
+     *  @param NULL
+     * *************************
+    */
+    public function marriage_details($id) {
+        $this->data['title']  = "Marriage Media";
+
+        $this->data['record'] = readTable('marriage', ['id'=>$id])[0];
+
+        return view('frontend.pages.marriage_details');
     }
 
     /*
@@ -73,8 +135,8 @@
 
         $product_id = base64_decode($btoa);
         $product    = getProducts(['products.id'=>$product_id]);
-        
-        // VISIT COUNT AND SAVE 
+
+        // VISIT COUNT AND SAVE
         if($product){
             update('products', [
                 'total_visit' => ($product[0]->total_visit+1)
@@ -190,7 +252,7 @@
 
             if($condition){
                 $result = $this->db->query("
-                    SELECT 
+                    SELECT
                         products.*,
                         stock.*,
                         brands.brand,
@@ -199,19 +261,19 @@
                         products.id,
                         (SELECT medium FROM product_images WHERE product_id=products.id AND type='general_photo' ORDER BY id DESC LIMIT 1) AS general_photo,
                         (SELECT medium FROM product_images WHERE product_id=products.id AND type='feature_photo' LIMIT 1) AS feature_photo
-                    FROM 
-                        products  
+                    FROM
+                        products
                     LEFT JOIN
                         stock ON stock.product_id=products.id
-                    LEFT JOIN 
+                    LEFT JOIN
                         brands ON brands.id=products.brand_id
-                    LEFT JOIN 
+                    LEFT JOIN
                         categories ON categories.id=products.cat_id
-                    LEFT JOIN 
+                    LEFT JOIN
                         subcategories ON subcategories.id=products.sub_cat_id
-                    WHERE 
+                    WHERE
                         products.status='available'
-                    AND 
+                    AND
                         products.trash=0
                         $condition
                     GROUP BY
@@ -219,15 +281,14 @@
                     LIMIT 8
 
                 ")->result();
-                echo json_encode($result);            
+                echo json_encode($result);
             }
 
         }
     }
 
-    // Subscriber For Updates 
-    public function subscriber()
-    {
+    // Subscriber For Updates
+    public function subscriber() {
         if(isset($_POST['email']) && $_POST['email']!=''){
             if(empty(readTable('subscriber', ['email'=>$_POST['email']]))){
                 save('subscriber', [
@@ -240,9 +301,8 @@
         redirect_back();
     }
 
-    // 
-    public function pages($title)
-    {
+    //
+    public function pages($title) {
         $page = readTable('pages', ['title'=>$title]);
         $this->data['page_content'] = ($page ? $page[0] : null);
 

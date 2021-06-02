@@ -54,14 +54,14 @@
                 <div class="category_box">
                     <img src="<?=site_url('public/images/categories/01.jpg')?>" alt="">
                     <h5 class="marriage">Marriage Media <i class="icon ion-md-arrow-forward"></i></h5>
-                    <a href="<?=site_url('top_category')?>" class="category_cover"></a>
+                    <a href="<?=site_url('marriage')?>" class="category_cover"></a>
                 </div>
             </div>
             <div class="col-sm-6">
                 <div class="category_box">
                     <img src="<?=site_url('public/images/categories/02.jpg')?>" alt="">
                     <h5 class="rent">Rent a Car <i class="icon ion-md-arrow-forward"></i></h5>
-                    <a href="<?=site_url('top_category')?>" class="category_cover"></a>
+                    <a href="<?=site_url('car')?>" class="category_cover"></a>
                 </div>
             </div>
         </div>

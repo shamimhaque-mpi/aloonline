@@ -3,6 +3,7 @@
 <!-- zoom images -->
 <link rel="stylesheet" href="<?=site_url('public/vendors/elevatezoom/css/jquery.ez-plus.css')?>">
 
+
 <style>
     /* details style start */
     .details_section {
@@ -97,6 +98,9 @@
         margin-top: 0;
     }
     .details_section .product_details .price {color: #E64723;}
+    .details_section .product_details h5 strong,
+    .details_section .product_details h4 strong,
+    .details_section .product_details h3 strong,
     .details_section .product_details p strong {
         display: inline-block;
         min-width: 100px;
@@ -108,61 +112,30 @@
         <div class="panel panel-default">
             <div class="panel-heading panal-header">
                 <div class="panal-header-title pull-left">
-                    <h1>Prodcut View</h1>
+                    <h1>View Porfile</h1>
                 </div>
             </div>
             <div class="panel-body details_section">
                 <div class="col-md-12">
                     <div class="row">
                         <div class="col-md-6">
-                            <?php
-                                $images = getImages($product->id);
-                                if(!empty($images)){
-                            ?>
                             <div class="product_images">
-                                <img id="img_01" src="<?=site_url($images[0]->large)?>" alt="">
+                                <img id="img_01" src="<?php echo site_url('public/images/marriage/01.jpg')?>" data-zoom-image="<?php echo site_url('public/images/marriage/01.jpg')?>" alt="">
                             </div>
+
                             <div class="owl-carousel tabs_product" id="gal1">
-                                <?php foreach($images as $row){ ?>
-                                <a href="#" data-update="" data-image="<?=site_url($row->large)?>">
-                                    <img src="<?=site_url($row->small)?>" alt="">
+                                <a href="#" data-update="" data-image="<?php echo site_url('public/images/marriage/01.jpg')?>">
+                                    <img src="<?php echo site_url('public/images/marriage/01.jpg')?>" alt="">
                                 </a>
-                                <?php } ?>
                             </div>
-                            <?php } ?>
                         </div>
                         <div class="col-md-6">
                             <div class="product_details">
-                                <h3><?=($product->title)?></h3>
-                                <p><strong>Short Description</strong> :<?=($product->short_description)?></p>
-                                <p><strong>Description</strong> : <?=($product->description)?></p>
-                                <p class="price"><strong>Price</strong> : ৳<?=($product->price)?></p>
-                                <p class="price"><strong>Discount</strong> : <?=($product->discount)?></p>
-                                <p><strong>Brand</strong> : <?=($product->brand)?></p>
-                                <p><strong>Category</strong> : <?=($product->category)?></p>
-                                <p><strong>Sub-Category</strong> : <?=($product->subcategory)?></p>
-                                <p><strong>Color</strong> :
-                                    <?php
-                                        $colors = getProductColors($product->id);
-                                        if(!empty($colors)) foreach ($colors as $key => $row) {
-                                            echo $row->color.',';
-                                        }
-                                    ?>
-                                </p>
-                                <p><strong>Size</strong> :
-                                    <?php
-                                        $sizes = getProductSizes($product->id);
-                                        if(!empty($sizes)) foreach ($sizes as $key => $row) {
-                                            echo $row->size.',';
-                                        }
-                                    ?>
-                                </p>
-                                <p><strong>Purchase Price</strong> : <?=($product->purchase_price ? $product->purchase_price : $product->d_purchase_price)?></p>
-                                <p><strong>Sale Price</strong> : <?=($product->price)?></p>
-                                <p><strong>Min-Qty</strong> : <?=($product->min_qty)?></p>
-                                <p><strong>Warranty</strong> : <?=($product->warranty)?></p>
-                                <p><strong>Feature Product</strong> : <?=ucfirst($product->feature_product)?></p>
-                                <p><strong>Status</strong> : <?=ucfirst($product->status)?></p>
+                                <h4><strong>Name</strong> : <?=($record->name)?></h4>
+                                <h4><strong>Age</strong> : <?=($record->age)?></h4>
+                                <h4><strong>Mobile</strong> : <?=($record->mobile)?></h4>
+                                <h4><strong>Address</strong> : <?=($record->address)?></h4>
+                                <p><strong>Discription</strong> : <?=($record->description)?></p>
                             </div>
                         </div>
                     </div>
