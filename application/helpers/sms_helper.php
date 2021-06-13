@@ -14,8 +14,8 @@
         if ($total_send_sms < $total_sms){
             
             try{
-                $username = "bgpsc";
-                $password = "freelance@IT321";
+                $username = "ddd";
+                $password = "ddddd";
                 $mobile = trim($gsm);
                 $url = "https://user.mobireach.com.bd/index.php?r=sms/service";
                 
