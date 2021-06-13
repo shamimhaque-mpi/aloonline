@@ -74,12 +74,14 @@
 <!-- categories section start -->
 <section class="categories_section">
     <div class="container">
-        <div class="owl-carousel categories_carousel">
+        <div class="row">
             <?php if(!empty($categories)) foreach($categories as $key=>$row){ ?>
-            <a class="categories" href="<?=site_url('category')?>">
-                <img src="<?=site_url($row->img)?>" alt="">
-                <h5 class="title"><?=($row->category)?> <i class="icon ion-md-arrow-forward"></i></h5>
-            </a>
+            <div class="col-lg-2 col-sm-3 col-4">
+                <a class="categories" href="<?=site_url('category')?>">
+                    <img src="<?=site_url($row->img)?>" alt="">
+                    <h5 class="title"><?=($row->category)?> <i class="icon ion-md-arrow-forward"></i></h5>
+                </a>
+            </div>
             <?php } ?>
         </div>
     </div>

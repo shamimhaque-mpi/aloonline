@@ -1,18 +1,18 @@
 /* product section start */
 .product_section {
     background: #FFF;
-    padding: 25px 0;
+    padding: 10px 0;
 }
 .search_area {
     border: 1px solid rgba(242, 243, 238, .2);
     background: #001E32;
-    padding: 35px 15px;
+    padding: 5px 5px;
     color: #fff;
     width: 100%;
     margin-bottom: 10px;
 }
 .search_area form {
-    justify-content: space-between;
+    /*justify-content: space-between;*/
     align-items: flex-end;
     display: flex;
     width: 100%;

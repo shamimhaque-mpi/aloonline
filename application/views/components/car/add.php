@@ -77,6 +77,13 @@
                             </div>
                         </div>
 
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label">Per Day (BDT)<span class="req">*</span></label>
+                                <input type="number" name="per_day" placeholder="Enter Amount" class="form-control" required>
+                            </div>
+                        </div>
+
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="control-label">Description <span class="req">*</span></label>

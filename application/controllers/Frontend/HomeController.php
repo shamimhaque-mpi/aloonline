@@ -77,7 +77,24 @@
     public function car() {
         $this->data['title'] = "Car Rent";
 
-        $this->data['record_list'] = readTable('car_rent', []);
+        $where = [];
+        if(!empty($_POST['search'])){
+            foreach ($_POST['search'] as $key => $value) {
+                if($value!=''){
+                    if($key=='budget_from'){
+                        $where['per_day >='] = $value;
+                    }
+                    else if($key=='budget_to'){
+                        $where['per_day <='] = $value;
+                    }
+                    else {
+                        $where[$key] = $value;
+                    }
+                }
+            }
+        }
+
+        $this->data['record_list'] = readTable('car_rent', $where);
 
         return view('frontend.pages.car');
     }

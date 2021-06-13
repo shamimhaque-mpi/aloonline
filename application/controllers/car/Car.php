@@ -12,7 +12,13 @@
         $where = [];
         if($_POST && is_array($_POST['search'])){
             foreach ($_POST['search'] as $key => $value) {
-                if($value!=''){
+                if($value!='' && $key=='from'){
+                    $where['per_day >= '] = $value;
+                }
+                else if($value!='' && $key=='to'){
+                    $where['per_day <= '] = $value;
+                }
+                else if($value!=''){
                     $where[$key] = $value;
                 }
             }

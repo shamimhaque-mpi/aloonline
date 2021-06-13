@@ -21,7 +21,7 @@
                         <div class="col-md-6">
                             <div class="product_details">
                                 <h4><strong>Car Title </strong> : <?=($record->title)?></h4>
-                                <h5 class="price"><strong>Par Day Price </strong> : 4655</h5>
+                                <h5 class="price"><strong>Par Day Price </strong> : <?=($record->per_day)?>TK</h5>
                                 <p><strong>Discription </strong> : <?=($record->description)?></p>
                             </div>
                         </div>

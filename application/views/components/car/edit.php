@@ -77,6 +77,13 @@
                             </div>
                         </div>
 
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label">Per Day (BDT)<span class="req">*</span></label>
+                                <input type="number" name="per_day" value="<?=($car->per_day)?>" placeholder="Enter Amount" class="form-control" required>
+                            </div>
+                        </div>
+
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="control-label">Description <span class="req">*</span></label>
@@ -92,7 +99,7 @@
                                     <img src="<?=site_url($car->photo)?>" alt="">
                                 </div>
                                 <label for="feature_photo">
-                                    <input type="file" id="feature_photo" onchange="fileLoadFn(this)" name="photo" required>
+                                    <input type="file" id="feature_photo" onchange="fileLoadFn(this)" name="photo">
                                     <input type="hidden" name="old_photo" value="<?=($car->photo)?>">
                                 </label>
                                 <span>Feature Photo <br> <small>(820X720)</small></span>

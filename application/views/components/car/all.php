@@ -21,11 +21,11 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <select name="search[id]" class="form-control selectpicker" data-live-search="true">
-                                    <option value="" selected disabled>Select Candidate</option>
+                                    <option value="" selected disabled>Select Car</option>
                                     <?php 
-                                        $all_candidate = readTable('marriage', [], ['select'=>'id, name, mobile']);
+                                        $all_candidate = readTable('car_rent', [], ['select'=>'id, title, mobile']);
                                         if($all_candidate) foreach ($all_candidate as $key => $value) {
-                                            echo "<option value='{$value->id}'>{$value->name}-{$value->mobile}</option>";
+                                            echo "<option value='{$value->id}'>{$value->title}-{$value->mobile}</option>";
                                         }
                                     ?>
                                 </select>
@@ -34,21 +34,14 @@
 
                         <div class="col-md-3">
                             <div class="form-group">
-                                <select name="search[gender]" class="form-control selectpicker" data-live-search="true">
-                                    <option value="">Select Gender</option>
-                                    <option value="male">Male</option>
-                                    <option value="female">Female</option>
-                                </select>
+                                <input type="number" name="search[from]" class="form-control" placeholder="From Amount" autocomplete="off">
                             </div>
                         </div>
 
+
                         <div class="col-md-3">
                             <div class="form-group">
-                                <select name="search[marital_status]" class="form-control selectpicker" data-live-search="true" >
-                                    <option value="">Select Status</option>
-                                    <option value="unmarried">Unmarried</option>
-                                    <option value="married">Married</option>
-                                </select>
+                                <input type="number" name="search[to]" class="form-control" placeholder="To Amount" autocomplete="off">
                             </div>
                         </div>
 
@@ -67,6 +60,7 @@
                         <th>Photo</th>
                         <th>Title</th>
                         <th>Mobile</th>
+                        <th>Per Day</th>
                         <th width="150" class="text-right">Action</th>
                     </tr>
 
@@ -76,6 +70,7 @@
                         <td><img src="<?=site_url($row->photo)?>" height="30"></td>
                         <td><?=($row->title)?></td>
                         <td><?=($row->mobile)?></td>
+                        <td><?=($row->per_day)?></td>
                         <td class="text-right">
                             <?php
                             if($action_menus){
@@ -91,7 +86,7 @@
                     </tr>
                     <?php }} else { ?>
                         <tr>
-                            <th colspan="11" class="text-center">Nothing Found</th>
+                            <th colspan="12" class="text-center">Nothing Found</th>
                         </tr>
                     <?php } ?>
                 </table>
